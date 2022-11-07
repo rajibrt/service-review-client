@@ -1,0 +1,36 @@
+import React, { useEffect, useState } from 'react';
+import LatestServices from '../../Home/LatestServices/LatestService';
+import ServiceCard from '../../Home/LatestServices/ServiceCard';
+
+const Services = () => {
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:4000/services')
+            .then(res => res.json())
+            .then(data => setServices(data));
+    }, [])
+    return (
+        <div>
+            <div className='m-auto w-2/3 text-center'>
+                <div className='my-8'>
+                    <h2 className='text-gray-800 text-3xl font-bold'>My Services</h2>
+                    <div className="divider"></div>
+                    <p>Take my service, hope I will give you a better experience. And give me positive feedback.</p>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 justify-items-center'>
+                    {
+                        services.map(service => <ServiceCard
+                            key={service._id}
+                            service={service}
+                        ></ServiceCard>
+                        )
+                    }
+                </div>
+
+            </div>
+        </div>
+    );
+};
+
+export default Services;
