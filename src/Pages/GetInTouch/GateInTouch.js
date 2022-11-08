@@ -14,7 +14,7 @@ const GetInTouch = () => {
                     <h1 data-aos="fade-up"
                         data-aos-anchor-placement="center-center" className="mb-5 text-5xl font-bold text-yellow-500">Get In Touch</h1>
                     <p data-aos="fade-up"
-                        data-aos-anchor-placement="center-center" className="mb-5">To capture your event or moment feel free to contact me. I am always ready to go...</p>
+                        data-aos-anchor-placement="center-center" className="mb-5 text-white">To capture your event or moment feel free to contact with me. I am always ready to go...</p>
                     <button className="btn bg-yellow-500 text-gray-800 hover:text-white">Get Started</button>
                 </div>
             </div>

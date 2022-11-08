@@ -2,6 +2,7 @@ import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { Link } from 'react-router-dom';
+import Star from './Star';
 // ..
 AOS.init();
 
@@ -13,11 +14,14 @@ const ServiceCard = ({ service }) => {
             <div className='relative rounded-xl'>
                 <figure><img className='w-full' src={image} alt="Shoes" /></figure>
                 <div data-aos="fade-down"
-                    data-aos-duration="3000" className='card-actions justify-between absolute bottom-0 bg-gray-800/50 w-full p-2 text-white'>
-                    <h2>Rating: {rating} </h2>
+                    data-aos-duration="1000" className='card-actions items-center justify-between absolute bottom-0 bg-gray-800/50 w-full p-2 text-white'>
+                    <h2><Star rating={rating}> </Star></h2>
+
                     <h2>Price <span className='font-bold text-orange-500'>${price}</span></h2>
                 </div>
+
             </div>
+
             <div className="card-body">
                 <h2 className="card-title">{title} </h2>
                 <p className='text-left'>{content.length > 100 ? content.slice(0, 100) + '...' : content}</p>

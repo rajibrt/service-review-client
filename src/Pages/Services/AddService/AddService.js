@@ -45,9 +45,8 @@ const AddService = () => {
 
                 <div className='flex gap-4'>
                     <input onBlur={handleInputBlur} type="text" name='price' className="input input-bordered w-1/2" placeholder="Price $" required></input>
-                    <input onBlur={handleInputBlur} type="number" name='rating' placeholder="Rating 1 to 5" className="input input-bordered w-1/2" required />
+                    <input onBlur={handleInputBlur} type="number" name='rating' placeholder="Rating 1 to 5" min="1" max="5" step="0.5" className="input input-bordered w-1/2" required />
                 </div>
-
 
                 <textarea onBlur={handleInputBlur} type="text" name='content' className="textarea textarea-bordered" placeholder="Fill Up" required></textarea>
                 <button type='submit' className='btn'>Add Service</button>
