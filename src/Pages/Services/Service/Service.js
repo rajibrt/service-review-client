@@ -9,8 +9,8 @@ import Star from '../../Home/LatestServices/Star';
 // ..
 AOS.init();
 
-const Service = ({ rating }) => {
-    const { title, image, content, price } = useLoaderData();
+const Service = () => {
+    const { title, image, rating, content, price } = useLoaderData();
     return (
         <div className="hero min-h-screen ">
             <div className="hero-content flex-col lg:flex-row bg-base-200 rounded-lg p-10 shadow-xl">
@@ -21,9 +21,10 @@ const Service = ({ rating }) => {
                         <img data-aos="fade-right" data-aos-delay="300" className='bg-center w-96 rounded-xl' src={image} alt="" />
                     </PhotoView>
                 </PhotoProvider>
-                <h2><Star rating={rating}> </Star></h2>
+
                 <div data-aos="zoom-in" data-aos-duration="1000">
                     <h1 className="text-5xl font-bold">{title}</h1>
+                    <h2 className='mt-4 text-xl'><Star rating={rating}> </Star></h2>
                     <p className="py-6">{content}</p>
                     <div className='flex gap-4 bg-white shadow-inner my-4 p-4 w-fit'>
                         <h2 className='font-bold text-orange-500 text-2xl'>Price ${price}</h2>
