@@ -17,7 +17,7 @@ const LatestServices = () => {
     }, [])
 
     return (
-        <div className='m-auto w-2/3 text-center my-4'>
+        <div className='m-auto w-2/3 text-center mb-10'>
             <div className='my-8'>
                 <h2 className='text-gray-800 text-3xl font-bold'>My Latest Service</h2>
                 <div className="divider"></div>
