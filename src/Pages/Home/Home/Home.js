@@ -1,13 +1,13 @@
 import React from 'react';
 import Hero from '../Hero/Hero';
 import LatestServices from '../LatestServices/LatestService';
-import OurGoal from '../OurGoal/OurGoal';
+import MyGoal from '../MyGoal/MyGoal';
 
 const Home = () => {
     return (
         <div>
             <Hero></Hero>
-            <OurGoal></OurGoal>
+            <MyGoal></MyGoal>
             <LatestServices></LatestServices>
         </div>
     );
