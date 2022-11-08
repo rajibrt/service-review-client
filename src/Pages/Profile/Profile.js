@@ -37,7 +37,7 @@ const Profile = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" defaultValue={user.email} name="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" defaultValue={user.email} name="email" placeholder="email" className="input input-bordered" readOnly required />
                         </div>
                         <div className="form-control">
                             <label className="label">
