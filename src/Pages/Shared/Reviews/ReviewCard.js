@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import Star from '../../Home/LatestServices/Star';
 import AOS from 'aos';
@@ -9,6 +9,7 @@ AOS.init();
 const ReviewCard = ({ review }) => {
     const { user } = useContext(AuthContext);
     const { message, photoURL, displayName, starRating } = review;
+
 
     return (
         <div data-aos="flip-up" className="flex flex-wrap items-center border-2 border-grey-500 p-4 rounded-lg relative justify-items-center">

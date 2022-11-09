@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../src/assets/logo.svg'
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import { FaUserCircle } from "react-icons/fa";
+import { FaPen, FaUserCircle } from "react-icons/fa";
 import { FcCameraAddon } from "react-icons/fc";
 
 const Header = () => {
@@ -12,8 +12,6 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
-        <li><Link to='/contact'>Contact</Link></li>
-
         {
             user?.email ?
                 <li><Link to='/addservice'>Add Service</Link></li>
@@ -25,7 +23,7 @@ const Header = () => {
 
 
     return (
-        <div className="navbar bg-base-100 md:px-8 py-4 shadow-md">
+        <div className="navbar bg-base-100 md:px-8 lg:py-4 shadow-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,7 +33,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to='/'><img className='w-32' src={logo} alt="" /></Link>
+                <Link to='/'><img className='lg:w-32 w-20' src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -43,13 +41,13 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/addservice' className="btn btn-ghost hover:bg-white text-red-500"><FcCameraAddon className='mr-2 text-xl'></FcCameraAddon> <span className='hidden lg:grid '>Add Service</span></Link>
 
                 {
                     user?.email ?
                         <>
+                            <Link to='/addservice' className="btn btn-ghost hover:bg-white text-red-500"><FcCameraAddon className='mr-2 text-xl'></FcCameraAddon> <span className='hidden lg:grid '>Add Service</span></Link>
+                            <Link to='/myreviews' className="btn btn-ghost hover:bg-white text-red-500"><FaPen className='mr-2 text-xl'></FaPen> <span className='hidden lg:grid '>My Reviews</span></Link>
                             <button className='btn btn-ghost hover:bg-white hover:text-yellow-500' onClick={logOut}>Logout</button>
-
                             <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
                                 <Link to="/profile">
                                     {user?.photoURL ?
