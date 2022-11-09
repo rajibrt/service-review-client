@@ -9,6 +9,7 @@ import Login from "../../Pages/Login/Login/Login";
 import SignUp from "../../Pages/Login/SignUp/SignUp";
 import Profile from "../../Pages/Profile/Profile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Reviews from "../../Pages/Shared/Reviews/Reviews";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
                 path: '/service/:id',
                 element: <PrivateRoute><Service></Service></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:4000/service/${params.id}`)
+            },
+            {
+                path: 'reviews/:id',
+                element: <Reviews></Reviews>,
+                loader: ({ params }) => fetch(`http://localhost:4000/reviews/${params.id}`)
             }
 
         ]

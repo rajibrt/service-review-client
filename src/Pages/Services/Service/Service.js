@@ -8,6 +8,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Star from '../../Home/LatestServices/Star';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import Reviews from '../../Shared/Reviews/Reviews';
+import { FaUserCircle } from 'react-icons/fa';
+import PostReview from '../../Shared/Reviews/PostReview';
 // ..
 AOS.init();
 
@@ -21,6 +24,7 @@ const Service = () => {
         event.preventDefault();
         const form = event.target;
         const email = user?.email ? user.email : 'unregistered';
+        const photoURL = user?.photoURL ? user.photoURL : <FaUserCircle></FaUserCircle>
         const message = form.message.value;
         const starRating = form.starRating.value;
 
@@ -28,6 +32,7 @@ const Service = () => {
 
         const reviews = {
             serviceId: _id,
+            photoURL,
             starRating,
             email,
             time,
@@ -85,7 +90,8 @@ const Service = () => {
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>
+                <Reviews></Reviews>
+                {/* <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>
                     <div className='grid justify-items-center my-8'>
                         <form onSubmit={handleSubmitReview} className='mt-4 grid gap-2 w-96'>
                             <input type="email" name='email' placeholder={user.email} defaultValue={user?.email} className="input input-bordered w-full" readOnly />
@@ -96,8 +102,9 @@ const Service = () => {
 
                         </form>
                     </div>
-                </div>
+                </div> */}
             </div>
+            <PostReview></PostReview>
         </div>
     );
 };

@@ -53,8 +53,7 @@ const Header = () => {
                             <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
                                 <Link to="/profile">
                                     {user?.photoURL ?
-                                        <img alt='Profile Img' className='img-fluid rounded-full' style={{ height: '40px', width: '40px' }} roundedCircle
-                                            src={user?.photoURL}></img>
+                                        <img alt='Profile Img' className='img-fluid rounded-full' style={{ height: '40px', width: '40px' }} src={user?.photoURL}></img>
                                         : <FaUserCircle></FaUserCircle>
                                     }
                                 </Link>
