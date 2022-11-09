@@ -16,7 +16,6 @@ const PostReview = () => {
     const { _id, time, title, image, rating, content, price } = useLoaderData();
     const { user } = useContext(AuthContext);
 
-
     // const [review, setReview] = useState({});
     const handleSubmitReview = event => {
         event.preventDefault();
@@ -58,17 +57,8 @@ const PostReview = () => {
             })
     }
 
-
-    // const handleInputBlur = event => {
-    //     const field = event.target.name;
-    //     const value = event.target.value;
-    //     const newReview = { ...reviews }
-    //     newReview[field] = value;
-    //     setReview(newReview);
-    // }
-
     return (
-        <div className=" min-h-screen m-auto w-5/6 my-8">
+        <div className="m-auto w-5/6 my-8">
 
 
             <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>

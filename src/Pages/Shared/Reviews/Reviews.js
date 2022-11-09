@@ -1,27 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import ReviewCard from './ReviewCard';
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     // const { message } = useLoaderData();
-    // console.log(message);
+    console.log(reviews);
 
     useEffect(() => {
-        const fetchData = () => {
-            fetch('http://localhost:4000/reviews')
-                .then(res => res.json())
-                .then(json => {
-                    const result = json.sort((a, b) => a._id.localeCompare(b._id))
-                    setReviews(result)
-                })
-                .catch(e => {
-                    console.log("error", e)
-                })
-        }
-        fetchData();
+        fetch(`http://localhost:4000/review?serviceId=${reviews.eserviceId}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
 
-    }, [])
+    }, [reviews?.serviceId])
     return (
         <div className='shadow-inner w-full bg-white p-4 rounded-lg'>
             <div className="card-title">Review found for this service: {reviews.length}</div>

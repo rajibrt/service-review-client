@@ -54,7 +54,7 @@ const Header = () => {
                                 <Link to="/profile">
                                     {user?.photoURL ?
                                         <img alt='Profile Img' className='img-fluid rounded-full' style={{ height: '40px', width: '40px' }} src={user?.photoURL}></img>
-                                        : <FaUserCircle></FaUserCircle>
+                                        : <FaUserCircle className='text-2xl text-blue-600 rounded-full  ring ring-orange-500 ring-offset-base-100 ring-offset-2' ></FaUserCircle>
                                     }
                                 </Link>
                             </div>

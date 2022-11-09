@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import toast, { Toaster } from 'react-hot-toast';
@@ -11,12 +11,15 @@ import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import Reviews from '../../Shared/Reviews/Reviews';
 import { FaUserCircle } from 'react-icons/fa';
 import PostReview from '../../Shared/Reviews/PostReview';
+import { FcComments } from 'react-icons/fc';
+import ReviewCard from '../../Shared/Reviews/ReviewCard';
 // ..
 AOS.init();
 
 const Service = () => {
     const { _id, time, title, image, rating, content, price } = useLoaderData();
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([])
 
 
     // const [review, setReview] = useState({});
@@ -61,6 +64,13 @@ const Service = () => {
     }
 
 
+    useEffect(() => {
+        fetch(`http://localhost:4000/review?serviceId=${_id}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+
+    }, [_id])
+
     // const handleInputBlur = event => {
     //     const field = event.target.name;
     //     const value = event.target.value;
@@ -70,7 +80,7 @@ const Service = () => {
     // }
 
     return (
-        <div className=" min-h-screen m-auto w-5/6 my-8">
+        <div className="m-auto w-5/6 my-8">
             <div className=" bg-base-200 rounded-lg p-10 shadow-xl">
                 <div className='hero-content flex-col lg:flex-row'>
                     <PhotoProvider>
@@ -90,7 +100,21 @@ const Service = () => {
                         </div>
                     </div>
                 </div>
-                <Reviews></Reviews>
+
+                <div className='shadow-inner w-full bg-white p-4 rounded-lg'>
+                    <div className="card-title">Review found for this service: {reviews.length}</div>
+                    <div className='grid gap-2'>
+                        {
+                            reviews.map(review => <ReviewCard
+                                key={review._id}
+                                review={review}
+                            ></ReviewCard>)
+                        }
+                    </div>
+                </div>
+
+                {/* <Reviews></Reviews> */}
+
                 {/* <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>
                     <div className='grid justify-items-center my-8'>
                         <form onSubmit={handleSubmitReview} className='mt-4 grid gap-2 w-96'>
@@ -103,8 +127,18 @@ const Service = () => {
                         </form>
                     </div>
                 </div> */}
+
+                {
+                    user?.email ?
+                        <PostReview></PostReview>
+                        :
+                        <div className='grid mx-auto max-w-fit'>
+                            <h2>Please login to add a review.</h2>
+                            <Link to={`/service/${_id}`} className="btn btn-ghost hover:bg-white text-red-500"><FcComments className='mr-2 text-xl'></FcComments> <span className='hidden lg:grid '>Add Review</span></Link>
+                            <button className='bg-yellow-500 text-black rounded-md py-1 px-2'><Link to='/login'>Login</Link></button>
+                        </div>
+                }
             </div>
-            <PostReview></PostReview>
         </div>
     );
 };

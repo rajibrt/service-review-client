@@ -3,10 +3,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 // ..
 AOS.init();
 
 const Login = () => {
+    useTitle('Login')
     const { login } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation();

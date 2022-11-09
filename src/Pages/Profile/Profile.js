@@ -1,37 +1,68 @@
-import React, { useContext } from 'react';
+import { updateCurrentUser } from 'firebase/auth';
+import React, { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Profile = () => {
+    useTitle('Profile')
     const { user } = useContext(AuthContext);
+    const { updateUserProfile } = useContext(AuthContext);
+    const [name, setName] = useState(user.displayName)
+    const photoURLRef = useRef(user.photoURL);
 
-    const handleSignUp = event => {
+    // const handleUpdate = event => {
+    //     event.preventDefault();
+    //     console.log(photoURLRef.current.value);
+    // }
+    // const handleNameChange = event => {
+    //     setName(event.target.value);
+    // }
+
+    const handleUpdate = event => {
         event.preventDefault();
         const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        // const email = form.email.value;
+        // const password = form.password.value;
 
-        user(email, password)
+        console.log(name, photoURL);
+
+        updateUserProfile(updateCurrentUser)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                handleUpdateUserProfile(name, photoURL);
+                // console.log(user);
             })
             .catch(error => console.log(error));
     }
-
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div data-aos="flip-left" className="hero-content w-96">
 
                 <div className="card shadow-2xl w-full">
-                    <form onSubmit={handleSignUp} className="card-body">
-                        <h1 data-aos="zoom-in" data-aos-delay="200" className="text-2xl text-center font-bold">Signup now!</h1>
+                    <form onSubmit={handleUpdate} className="card-body">
+                        <h1 data-aos="zoom-in" data-aos-delay="200" className="text-2xl text-center font-bold">My Details</h1>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+                            <input type="text" name="name" defaultValue={name} placeholder="name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Profile Image</span>
+                            </label>
+                            <input type="text" name="photoURL" defaultValue={user?.photoURL} placeholder="profile image https/..." className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -39,22 +70,16 @@ const Profile = () => {
                             </label>
                             <input type="email" defaultValue={user.email} name="email" placeholder="email" className="input input-bordered" readOnly required />
                         </div>
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
+                        </div> */}
                         <div className="form-control mt-6">
-                            <input type="submit" className="btn w-full bg-yellow-500 border-none hover:text-white text-black" value="Sign Up" />
+                            <input type="submit" className="btn w-full bg-yellow-500 border-none hover:text-white text-black" value="Update" />
                         </div>
                     </form>
-                    <div className='mb-4'>
-                        <h2 className='text-center'>Already an account? Please <Link to='/login' className='text-yellow-500 cursor-pointer'>Login</Link></h2>
-                    </div>
                 </div>
             </div>
         </div>
