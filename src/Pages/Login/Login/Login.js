@@ -4,14 +4,18 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { FaGoogle } from 'react-icons/fa';
 // ..
 AOS.init();
 
 const Login = () => {
     useTitle('Login')
-    const { login } = useContext(AuthContext);
+    const { login, providerLogin } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation();
+    const googleProviderLogin = new GoogleAuthProvider();
+
     const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
@@ -27,6 +31,18 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => console.log(error));
+    }
+
+
+    const handleGoogleSignIn = () => {
+        return providerLogin(googleProviderLogin)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -51,8 +67,9 @@ const Login = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
-                        <div className="form-control mt-6">
+                        <div className="form-control mt-6 flex gap-2">
                             <input type="submit" className="btn w-full bg-yellow-500 border-none hover:text-white text-black" value="login" />
+                            <button className='btn w-full bg-blue-500 border-none hover:text-white text-white' onClick={handleGoogleSignIn}><FaGoogle className='mr-2'></FaGoogle>Login with Google</button>
                         </div>
                     </form>
                     <div className='mb-4'>
