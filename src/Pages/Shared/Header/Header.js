@@ -43,19 +43,22 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/addservice' className="btn btn-ghost hover:bg-white text-red-500"><FcCameraAddon className='mr-2 text-xl'></FcCameraAddon> Add Service</Link>
+                <Link to='/addservice' className="btn btn-ghost hover:bg-white text-red-500"><FcCameraAddon className='mr-2 text-xl'></FcCameraAddon> <span className='hidden lg:grid '>Add Service</span></Link>
 
                 {
                     user?.email ?
                         <>
                             <button className='btn btn-ghost hover:bg-white hover:text-yellow-500' onClick={logOut}>Logout</button>
-                            <Link to="/profile">
-                                {user?.photoURL ?
-                                    <img alt='Profile Img' className='img-fluid rounded-full' style={{ height: '40px', width: '40px' }} roundedCircle
-                                        src={user?.photoURL}></img>
-                                    : <FaUserCircle></FaUserCircle>
-                                }
-                            </Link>
+
+                            <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                                <Link to="/profile">
+                                    {user?.photoURL ?
+                                        <img alt='Profile Img' className='img-fluid rounded-full' style={{ height: '40px', width: '40px' }} roundedCircle
+                                            src={user?.photoURL}></img>
+                                        : <FaUserCircle></FaUserCircle>
+                                    }
+                                </Link>
+                            </div>
                         </>
                         :
                         <Link className="btn bg-gray-900 text-white border-0 hover:bg-yellow-500 mx-4" to='/login'>Login</Link>
