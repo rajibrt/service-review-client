@@ -7,9 +7,9 @@ AOS.init();
 const GetInTouch = () => {
     return (
         <div data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom" className="hero min-h-[500px]" style={{ backgroundImage: `url("https://i.ibb.co/4WfNf66/get-in-touch.webp")` }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
+            data-aos-anchor-placement="bottom-bottom" className="mx-auto rounded-lg mb-10 hero w-5/6 min-h-[500px]" style={{ backgroundImage: `url("https://i.ibb.co/4WfNf66/get-in-touch.webp")` }}>
+            <div className="hero-overlay bg-opacity-60 rounded-lg"></div>
+            <div className="hero-content text-center text-neutral-content ">
                 <div className="max-w-md">
                     <h1 data-aos="fade-up"
                         data-aos-anchor-placement="center-center" className="mb-5 text-5xl font-bold text-yellow-500">Get In Touch</h1>

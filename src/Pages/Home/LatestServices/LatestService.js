@@ -10,10 +10,25 @@ const LatestServices = () => {
 
     const [services, setServices] = useState([])
 
+    // useEffect(() => {
+    //     fetch('http://localhost:4000/services')
+    //         .then(res => res.json())
+    //         .then(data => setServices(data));
+    // }, [])
     useEffect(() => {
-        fetch('http://localhost:4000/services')
-            .then(res => res.json())
-            .then(data => setServices(data));
+        const fetchData = () => {
+            fetch('http://localhost:4000/services')
+                .then(res => res.json())
+                .then(json => {
+                    const result = json.sort((a, b) => a._id.localeCompare(b._id))
+                    setServices(result)
+                })
+                .catch(e => {
+                    console.log("error", e)
+                })
+        }
+        fetchData();
+
     }, [])
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import GetInTouch from '../../GetInTouch/GateInTouch';
+import GetInTouch from '../../GetInTouch/GetInTouch';
 import Hero from '../Hero/Hero';
 import LatestServices from '../LatestServices/LatestService';
 import MyGoal from '../MyGoal/MyGoal';

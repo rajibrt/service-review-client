@@ -3,6 +3,9 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../src/assets/logo.svg'
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { FaUserCircle } from "react-icons/fa";
+import { FcCameraAddon } from "react-icons/fc";
+
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     const menuItems = <>
@@ -22,7 +25,7 @@ const Header = () => {
 
 
     return (
-        <div className="navbar bg-base-100 px-8 py-4 shadow-md">
+        <div className="navbar bg-base-100 md:px-8 py-4 shadow-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,13 +43,19 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/addservice' className="btn bg-red-500 text-white border-0 hover:bg-yellow-500">Add Service</Link>
+                <Link to='/addservice' className="btn btn-ghost hover:bg-white text-red-500"><FcCameraAddon className='mr-2 text-xl'></FcCameraAddon> Add Service</Link>
+
                 {
                     user?.email ?
                         <>
-                            <button onClick={logOut}>Logout</button>
-                            <Link to='/profile'>{user?.email && <span>Welcome, {user.email}</span>}</Link>
-                            <Link to='/profile'>Profile</Link>
+                            <button className='btn btn-ghost hover:bg-white hover:text-yellow-500' onClick={logOut}>Logout</button>
+                            <Link to="/profile">
+                                {user?.photoURL ?
+                                    <img alt='Profile Img' className='img-fluid rounded-full' style={{ height: '40px', width: '40px' }} roundedCircle
+                                        src={user?.photoURL}></img>
+                                    : <FaUserCircle></FaUserCircle>
+                                }
+                            </Link>
                         </>
                         :
                         <Link className="btn bg-gray-900 text-white border-0 hover:bg-yellow-500 mx-4" to='/login'>Login</Link>
