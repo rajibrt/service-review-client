@@ -21,6 +21,7 @@ const PostReview = () => {
         event.preventDefault();
         const form = event.target;
         const email = user?.email ? user.email : 'unregistered';
+        const displayName = user?.displayName ? user.displayName : ''
         const photoURL = user?.photoURL ? user.photoURL : <FaUserCircle></FaUserCircle>
         const message = form.message.value;
         const starRating = form.starRating.value;
@@ -30,6 +31,7 @@ const PostReview = () => {
         const reviews = {
             serviceId: _id,
             photoURL,
+            displayName,
             starRating,
             email,
             time,
@@ -58,13 +60,17 @@ const PostReview = () => {
     }
 
     return (
-        <div className="m-auto w-5/6 my-8">
-
-
+        <div data-aos="fade-down" className="m-auto w-full my-8">
             <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>
                 <div className='grid justify-items-center my-8'>
                     <form onSubmit={handleSubmitReview} className='mt-4 grid gap-2 w-96'>
-                        <input type="email" name='email' placeholder={user.email} defaultValue={user?.email} className="input input-bordered w-full" readOnly />
+                        <div className='border-b-2 border-yellow-500'>
+                            <h2 className='text-center font-bold text-xl border-b-2 border-yellow-500'>Dear {user.displayName}, Thanks for your review! </h2>
+                            <div className='flex justify-between'>
+                                <input type="text" name='name' placeholder={user.displayName} defaultValue={user?.displayName} className="input input-bordered" disabled />
+                                <input type="email" name='email' placeholder={user.email} defaultValue={user?.email} className="input input-bordered textarea" disabled />
+                            </div>
+                        </div>
                         <input type="number" name='starRating' placeholder="Rating 1 to 5" min="1" max="5" step="0.5" className="input input-bordered w-1/2" required />
                         <textarea type="text" name='message' className="textarea textarea-bordered h-48" placeholder="Fill Up" required></textarea>
                         <button type='submit' className='btn'>Submit Reviews</button>

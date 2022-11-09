@@ -9,7 +9,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Star from '../../Home/LatestServices/Star';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import Reviews from '../../Shared/Reviews/Reviews';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaKey, FaUserCircle } from 'react-icons/fa';
 import PostReview from '../../Shared/Reviews/PostReview';
 import { FcComments } from 'react-icons/fc';
 import ReviewCard from '../../Shared/Reviews/ReviewCard';
@@ -101,9 +101,9 @@ const Service = () => {
                     </div>
                 </div>
 
-                <div className='shadow-inner w-full bg-white p-4 rounded-lg'>
-                    <div className="card-title">Review found for this service: {reviews.length}</div>
-                    <div className='grid gap-2'>
+                <div className='shadow-inner w-full bg-white p-4 rounded-lg mb-10'>
+                    <div className="lg:card-title text-center mb-2">Review found for this service: {reviews.length}</div>
+                    <div className='grid lg:grid-cols-2 gap-2'>
                         {
                             reviews.map(review => <ReviewCard
                                 key={review._id}
@@ -132,10 +132,9 @@ const Service = () => {
                     user?.email ?
                         <PostReview></PostReview>
                         :
-                        <div className='grid mx-auto max-w-fit'>
-                            <h2>Please login to add a review.</h2>
-                            <Link to={`/service/${_id}`} className="btn btn-ghost hover:bg-white text-red-500"><FcComments className='mr-2 text-xl'></FcComments> <span className='hidden lg:grid '>Add Review</span></Link>
-                            <button className='bg-yellow-500 text-black rounded-md py-1 px-2'><Link to='/login'>Login</Link></button>
+                        <div data-aos="fade-up" className='grid mx-auto max-w-fit border-dotted border-2 border-yellow-600 p-4 rounded-lg'>
+                            <h2>login to add a review .</h2>
+                            <Link to='/login' className="btn btn-ghost hover:bg-white text-red-500"><FaKey className='mr-2 text-xl'></FaKey> <span className='hidden lg:grid '>LOGIN</span></Link>
                         </div>
                 }
             </div>
