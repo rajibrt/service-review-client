@@ -12,12 +12,14 @@ import Reviews from '../../Shared/Reviews/Reviews';
 import { FaKey, FaUserCircle } from 'react-icons/fa';
 import PostReview from '../../Shared/Reviews/PostReview';
 import ReviewCard from '../../Shared/Reviews/ReviewCard';
+import useTitle from '../../../hooks/useTitle';
 
 // ..
 AOS.init();
 
 const Service = () => {
     const { _id, time, title, image, rating, content, price } = useLoaderData();
+    useTitle(`${title}`)
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
 
@@ -44,7 +46,7 @@ const Service = () => {
             message
         }
 
-        fetch('http://localhost:4000/reviews', {
+        fetch('https://onclick-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,7 +67,7 @@ const Service = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/review?serviceId=${_id}`)
+        fetch(`https://onclick-server.vercel.app/review?serviceId=${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
 
@@ -91,8 +93,6 @@ const Service = () => {
 
                     <div data-aos="zoom-in" data-aos-duration="1000">
                         <h1 className="text-5xl font-bold">{title}</h1>
-                        <div>Publish Date: {time}</div>
-                        {/* <div>Publish Date: {moment().format('MMMM Do YYYY, h:mm:ss a')}</div> */}
                         <h2 className='mt-4 text-xl'><Star rating={rating}> </Star></h2>
                         <p className="py-6">{content}</p>
                         <div className='flex gap-4 bg-white shadow-inner my-4 p-4 w-fit'>

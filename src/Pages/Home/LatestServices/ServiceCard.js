@@ -12,7 +12,7 @@ const ServiceCard = ({ service }) => {
     const [services, setServices] = useState([])
     useEffect(() => {
         const fetchData = () => {
-            fetch('http://localhost:4000/services/home')
+            fetch('https://onclick-server.vercel.app/services/home')
                 .then(res => res.json())
                 .then(json => {
                     const result = json.sort((a, b) => a.submissionTime.localeCompare(b.submissionTime))

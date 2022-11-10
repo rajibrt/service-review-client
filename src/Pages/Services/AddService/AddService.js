@@ -15,6 +15,7 @@ const AddService = () => {
         const image = form.image.value;
         const rating = form.rating.value;
         const title = form.title.value;
+        const price = form.price.value;
         const content = form.content.value;
 
 
@@ -24,13 +25,14 @@ const AddService = () => {
             image,
             rating,
             title,
+            price,
             content,
         }
 
 
         console.log(service)
 
-        fetch('http://localhost:4000/service', {
+        fetch('https://onclick-server.vercel.app/service', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

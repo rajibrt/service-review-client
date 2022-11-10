@@ -15,13 +15,13 @@ const LatestServices = () => {
     // }
 
     // useEffect(() => {
-    //     fetch('http://localhost:4000/services')
+    //     fetch('https://onclick-server.vercel.app/services')
     //         .then(res => res.json())
     //         .then(data => setServices(data));
     // }, [])
     useEffect(() => {
         const fetchData = () => {
-            fetch('http://localhost:4000/services/home')
+            fetch('https://onclick-server.vercel.app/services/home')
                 .then(res => res.json())
                 .then(json => {
                     const result = json.sort((a, b) => b._id.localeCompare(a._id))

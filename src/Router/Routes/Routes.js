@@ -11,6 +11,7 @@ import Profile from "../../Pages/Profile/Profile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Reviews from "../../Pages/Shared/Reviews/Reviews";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
+import EditReview from "../../Pages/Shared/Reviews/EditReview";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -53,12 +54,12 @@ const router = createBrowserRouter([
             {
                 path: '/service/:id',
                 element: <Service></Service>,
-                loader: ({ params }) => fetch(`http://localhost:4000/service/${params.id}`)
+                loader: ({ params }) => fetch(`https://onclick-server.vercel.app/service/${params.id}`)
             },
             {
                 path: '/reviews/:id',
                 element: <Reviews></Reviews>,
-                loader: ({ params }) => fetch(`http://localhost:4000/review?serviceId=${params.id}`)
+                loader: ({ params }) => fetch(`https://onclick-server.vercel.app/review?serviceId=${params.id}`)
             },
             {
                 path: 'reviews',
@@ -67,13 +68,18 @@ const router = createBrowserRouter([
             {
                 path: '/postreview/:id',
                 element: <PrivateRoute><Reviews></Reviews></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:4000/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://onclick-server.vercel.app/reviews/${params.id}`)
 
             },
             {
                 path: '/myreviews',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
 
+            },
+            {
+                path: '/editreview/:id',
+                element: <PrivateRoute><EditReview></EditReview></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://onclick-server.vercel.app/review?serviceId=${params.id}`)
             }
 
         ]

@@ -8,14 +8,30 @@ const MyReviews = () => {
     useTitle('My Review')
     const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
+    const [reviews, setReviews] = useState([])
     console.log(user);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/myreviews?email=${user?.email}`)
+        fetch(`https://onclick-server.vercel.app/myreviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [user?.email])
 
+    useEffect(() => {
+        const fetchData = () => {
+            fetch('https://onclick-server.vercel.app/myreviews')
+                .then(res => res.json())
+                .then(json => {
+                    const result = json.sort((a, b) => b._id.localeCompare(a._id))
+                    setReviews(result)
+                })
+                .catch(e => {
+                    console.log("error", e)
+                })
+        }
+        fetchData();
+
+    }, [])
 
 
     return (

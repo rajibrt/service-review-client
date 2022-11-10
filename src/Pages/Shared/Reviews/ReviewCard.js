@@ -15,7 +15,7 @@ const ReviewCard = ({ review }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this review')
         if (proceed) {
-            fetch(`http://localhost:4000/reviews/${id}`, {
+            fetch(`https://onclick-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -32,7 +32,7 @@ const ReviewCard = ({ review }) => {
 
     useEffect(() => {
         const fetchData = () => {
-            fetch('http://localhost:4000/reviews')
+            fetch('https://onclick-server.vercel.app/reviews')
                 .then(res => res.json())
                 .then(json => {
                     const result = json.sort((a, b) => a.submissionTime.localeCompare(b.submissionTime))

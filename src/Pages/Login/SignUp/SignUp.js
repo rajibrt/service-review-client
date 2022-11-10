@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
@@ -10,7 +10,11 @@ AOS.init();
 const SignUp = () => {
     useTitle('Signup')
     const [error, setError] = useState('');
+    const navigate = useNavigate()
+    const location = useLocation();
     const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const from = location.state?.from?.pathname || '/'
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -28,6 +32,7 @@ const SignUp = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
+                Navigate(from, { replace: true });
             })
             .catch(error => console.log(error));
     }

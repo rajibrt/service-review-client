@@ -7,7 +7,7 @@ const Reviews = () => {
     console.log(reviews);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/review?serviceId=${reviews.eserviceId}`)
+        fetch(`https://onclick-server.vercel.app/review?serviceId=${reviews.eserviceId}`)
             .then(res => res.json())
             .then(data => setReviews(data))
 

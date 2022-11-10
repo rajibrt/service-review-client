@@ -7,14 +7,14 @@ const Services = () => {
     const [services, setServices] = useState([])
     useTitle('Services')
     // useEffect(() => {
-    //     fetch('http://localhost:4000/services')
+    //     fetch('https://onclick-server.vercel.app/services')
     //         .then(res => res.json())
     //         .then(data => setServices(data));
     // }, [])
 
     useEffect(() => {
         const fetchData = () => {
-            fetch('http://localhost:4000/services')
+            fetch('https://onclick-server.vercel.app/services')
                 .then(res => res.json())
                 .then(data => {
                     const result = data.sort((a, b) => b._id.localeCompare(a._id))
