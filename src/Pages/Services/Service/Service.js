@@ -73,14 +73,6 @@ const Service = () => {
 
     }, [_id])
 
-    // const handleInputBlur = event => {
-    //     const field = event.target.name;
-    //     const value = event.target.value;
-    //     const newReview = { ...reviews }
-    //     newReview[field] = value;
-    //     setReview(newReview);
-    // }
-
     return (
         <div className="m-auto w-5/6 my-8">
             <div className=" bg-base-200 rounded-lg p-10 shadow-xl">
@@ -112,21 +104,6 @@ const Service = () => {
                         }
                     </div>
                 </div>
-
-                {/* <Reviews></Reviews> */}
-
-                {/* <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>
-                    <div className='grid justify-items-center my-8'>
-                        <form onSubmit={handleSubmitReview} className='mt-4 grid gap-2 w-96'>
-                            <input type="email" name='email' placeholder={user.email} defaultValue={user?.email} className="input input-bordered w-full" readOnly />
-                            <input type="number" name='starRating' placeholder="Rating 1 to 5" min="1" max="5" step="0.5" className="input input-bordered w-1/2" required />
-                            <textarea type="text" name='message' className="textarea textarea-bordered h-48" placeholder="Fill Up" required></textarea>
-                            <button type='submit' className='btn'>Submit Reviews</button>
-                            <Toaster />
-
-                        </form>
-                    </div>
-                </div> */}
 
                 {
                     user?.email ?

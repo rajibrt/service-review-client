@@ -1,3 +1,27 @@
+> ### Website Name: `onClick - Photography`
+> * Client-Side code github repository https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-rajibrt
+> * Server-Side code github repository https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-rajibrt
+> * Live Link: https://trust-f2212.web.app/
+###  What in this website:
+* Personal photography website offering various type of photoshoots
+* Various type of photography packages available
+* Worldwide access
+* Admin can post new service (for demo site suer can post also)
+* Full responsive design
+* Fast loading
+* Clean UI
+* User can review service and can delete review
+### I used for this website
+* React JS
+* Node JS
+* Tailwind
+* MongoDB
+* JWT token
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

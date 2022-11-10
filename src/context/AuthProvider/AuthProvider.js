@@ -30,6 +30,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        localStorage.removeItem('onClink-token');
         return signOut(auth);
     }
 

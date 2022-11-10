@@ -35,7 +35,7 @@ const ReviewCard = ({ review }) => {
             fetch('https://onclick-server.vercel.app/reviews')
                 .then(res => res.json())
                 .then(json => {
-                    const result = json.sort((a, b) => a.submissionTime.localeCompare(b.submissionTime))
+                    const result = json.sort((a, b) => b.submissionTime.localeCompare(a.submissionTime))
                     setReviews(result)
                 })
                 .catch(e => {
