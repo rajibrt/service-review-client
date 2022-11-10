@@ -12,7 +12,11 @@ const MyReviews = () => {
     console.log(user);
 
     useEffect(() => {
-        fetch(`https://onclick-server.vercel.app/myreviews?email=${user?.email}`)
+        fetch(`https://onclick-server.vercel.app/myreviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('onClink-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [user?.email])

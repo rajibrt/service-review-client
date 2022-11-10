@@ -15,7 +15,7 @@ const ServiceCard = ({ service }) => {
             fetch('https://onclick-server.vercel.app/services/home')
                 .then(res => res.json())
                 .then(json => {
-                    const result = json.sort((a, b) => a.submissionTime.localeCompare(b.submissionTime))
+                    const result = json.sort((a, b) => a._id.localeCompare(b._id))
                     setServices(result)
                 })
                 .catch(e => {

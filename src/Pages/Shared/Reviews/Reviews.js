@@ -7,7 +7,11 @@ const Reviews = () => {
     console.log(reviews);
 
     useEffect(() => {
-        fetch(`https://onclick-server.vercel.app/review?serviceId=${reviews.eserviceId}`)
+        fetch(`https://onclick-server.vercel.app/review?serviceId=${reviews.eserviceId}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('onClink-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setReviews(data))
 
