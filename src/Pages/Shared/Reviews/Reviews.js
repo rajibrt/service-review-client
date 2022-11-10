@@ -12,6 +12,9 @@ const Reviews = () => {
             .then(data => setReviews(data))
 
     }, [reviews?.serviceId])
+
+
+
     return (
         <div className='shadow-inner w-full bg-white p-4 rounded-lg'>
             <div className="card-title">Review found for this service: {reviews.length}</div>
@@ -20,6 +23,7 @@ const Reviews = () => {
                     reviews.map(review => <ReviewCard
                         key={review._id}
                         review={review}
+                    // handleDelete={handleDelete}
                     ></ReviewCard>)
                 }
             </div>

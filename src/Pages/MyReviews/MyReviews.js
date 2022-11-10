@@ -19,7 +19,10 @@ const MyReviews = () => {
 
     return (
         <div className='shadow-inner bg-white p-4 rounded-lg lg:w-3/5 w-5/6 mx-auto my-8 min-h-screen'>
-            <div className="card-title">Review found for this service: {myReviews.length}</div>
+            <div className='mb-4'>
+                <h2 className='text-center  text-2xl'><span className='mr-2'>You have reviewed:</span>
+                    {myReviews.length > 0 ? myReviews.length : `No reviews were added`}</h2>
+            </div>
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-2'>
                 {
                     myReviews.map(review => <ReviewCard

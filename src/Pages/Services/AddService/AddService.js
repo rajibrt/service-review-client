@@ -33,6 +33,7 @@ const AddService = () => {
     const handleInputBlur = event => {
         const field = event.target.name;
         const value = event.target.value;
+        const time = new Date();
         const newService = { ...service }
         newService[field] = value;
         setService(newService);
@@ -43,7 +44,7 @@ const AddService = () => {
         <div className='grid justify-items-center my-8'>
             <h2>Post Service</h2>
             <form onSubmit={addService} className='mt-4 grid gap-2 w-96'>
-                <input hidden onBlur={handleInputBlur} type="text" name='time' placeholder="Time & Date" defaultValue={moment().format()} className="input input-bordered w-full" />
+                <input onBlur={handleInputBlur} type="text" name='time' placeholder="Time & Date" defaultValue={moment().format()} className="input input-bordered w-full" />
                 <input onBlur={handleInputBlur} type="text" name='title' placeholder="Service Title" className="input input-bordered w-full" required />
                 <input onBlur={handleInputBlur} type="link" name='image' placeholder="Service Image" className="input input-bordered w-full" required />
 

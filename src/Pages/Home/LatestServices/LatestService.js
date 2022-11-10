@@ -9,6 +9,9 @@ AOS.init();
 const LatestServices = () => {
 
     const [services, setServices] = useState([])
+    // services.sort((a, b) =>{
+    //     return new Date(b.updated_at) - new Date(<a href="" className="updated_at"></a>
+    // }
 
     // useEffect(() => {
     //     fetch('http://localhost:4000/services')

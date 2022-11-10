@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { MdDelete } from "react-icons/md";
 import Star from '../../Home/LatestServices/Star';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -8,8 +9,26 @@ AOS.init();
 
 const ReviewCard = ({ review }) => {
     const { user } = useContext(AuthContext);
-    const { message, photoURL, displayName, starRating } = review;
+    const { _id, message, photoURL, displayName, starRating, } = review;
+    const [reviews, setReviews] = useState([])
 
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure you want to delete this review')
+        if (proceed) {
+            fetch(`http://localhost:4000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully');
+                        const remaining = reviews.filter(rev => rev._id !== id);
+                        setReviews(remaining);
+                    }
+                })
+        };
+    }
 
     return (
         <div data-aos="flip-up" className="flex flex-wrap items-center border-2 border-grey-500 p-4 rounded-lg relative justify-items-center">
@@ -21,6 +40,9 @@ const ReviewCard = ({ review }) => {
                 <p>{message}</p>
             </div>
             <div className='absolute right-2 top-2 lg:text-base text-xs'><Star rating={starRating}> </Star></div>
+            <div className='absolute right-8 bottom-4 flex'>
+                <button onClick={() => handleDelete(_id)} className='text-2xl text-red-500'><MdDelete></MdDelete></button>
+            </div>
         </div>
 
     );
