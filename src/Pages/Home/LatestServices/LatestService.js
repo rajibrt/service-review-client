@@ -20,7 +20,7 @@ const LatestServices = () => {
     // }, [])
     useEffect(() => {
         const fetchData = () => {
-            fetch('http://localhost:4000/services')
+            fetch('http://localhost:4000/services/home')
                 .then(res => res.json())
                 .then(json => {
                     const result = json.sort((a, b) => a._id.localeCompare(b._id))
@@ -43,7 +43,7 @@ const LatestServices = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 justify-items-center'>
                 {
-                    services.slice(-3).map(service => <ServiceCard
+                    services.map(service => <ServiceCard
                         key={service._id}
                         service={service}
                     ></ServiceCard>

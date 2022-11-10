@@ -7,7 +7,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
 AOS.init();
 
-const ReviewCard = ({ review }) => {
+const MyReviewCard = ({ review }) => {
     const { user } = useContext(AuthContext);
     const { _id, message, photoURL, displayName, starRating, } = review;
     const [reviews, setReviews] = useState([])
@@ -56,12 +56,11 @@ const ReviewCard = ({ review }) => {
                 <p>{message}</p>
             </div>
             <div className='absolute right-2 top-2 lg:text-base text-xs'><Star rating={starRating}> </Star></div>
-            {/* <div className='absolute right-8 bottom-4 flex'>
+            <div className='absolute right-8 bottom-4 flex'>
                 <button onClick={() => handleDelete(_id)} className='text-2xl text-red-500'><MdDelete></MdDelete></button>
-            </div> */}
+            </div>
         </div>
 
     );
 };
-
-export default ReviewCard;
+export default MyReviewCard;

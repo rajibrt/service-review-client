@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import MyReviewCard from '../Shared/Reviews/MyReviewCard';
 import ReviewCard from '../Shared/Reviews/ReviewCard';
 
 const MyReviews = () => {
@@ -25,10 +26,10 @@ const MyReviews = () => {
             </div>
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-2'>
                 {
-                    myReviews.map(review => <ReviewCard
+                    myReviews.map(review => <MyReviewCard
                         key={review._id}
                         review={review}
-                    ></ReviewCard>)
+                    ></MyReviewCard>)
                 }
             </div>
         </div>

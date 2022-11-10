@@ -20,6 +20,7 @@ const PostReview = () => {
     const handleSubmitReview = event => {
         event.preventDefault();
         const form = event.target;
+        const submissionTime = new Date().getTime();
         const email = user?.email ? user.email : 'unregistered';
         const displayName = user?.displayName ? user.displayName : ''
         const photoURL = user?.photoURL ? user.photoURL : <FaUserCircle></FaUserCircle>
@@ -34,7 +35,7 @@ const PostReview = () => {
             displayName,
             starRating,
             email,
-            time,
+            submissionTime,
             title,
             image,
             message
