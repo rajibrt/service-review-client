@@ -17,7 +17,12 @@
 * Node JS
 * Tailwind
 * MongoDB
+* Firebase Auth
 * JWT token
+## Site deploy information
+* Database on mongoDb
+* File host on Firebase
+* Server on vercel
 
 
 
