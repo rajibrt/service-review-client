@@ -61,20 +61,20 @@ const PostReview = () => {
     }
 
     return (
-        <div data-aos="fade-down" className="m-auto my-8 lg:full w-9/12 ">
+        <div data-aos="fade-down" className="m-auto my-8">
             <div className='grid grid-cols-1 gap-4 m-auto justify-items-center'>
                 <div className='grid justify-items-center my-8'>
-                    <form onSubmit={handleSubmitReview} className='mt-4 grid gap-2 lg:w-full w-9/12'>
-                        <div className='border-b-2 border-yellow-500 lg:w-full w-9/12'>
+                    <form onSubmit={handleSubmitReview} className='mt-4 grid gap-2'>
+                        <div className='border-b-2 border-yellow-500 lg:w-full'>
                             <h2 className='text-center font-bold text-xl border-b-2 border-yellow-500'>Dear {user.displayName}, Thanks for your review! </h2>
-                            <div className='flex justify-between'>
+                            <div className='flex justify-between flex-wrap'>
                                 <input type="text" name='name' placeholder={user.displayName} defaultValue={user?.displayName} className="input input-bordered" disabled />
                                 <input type="email" name='email' placeholder={user.email} defaultValue={user?.email} className="input input-bordered textarea" disabled />
                             </div>
                         </div>
                         <input type="number" name='starRating' placeholder="Rating 1 to 5" min="1" max="5" step="0.5" className="input input-bordered w-1/2" required />
-                        <textarea type="text" name='message' className="textarea textarea-bordered h-48 lg:w-full w-9/12" placeholder="Fill Up" required></textarea>
-                        <button type='submit' className='btn lg:w-full w-fit mx-auto '>Submit Reviews</button>
+                        <textarea type="text" name='message' className="textarea textarea-bordered h-48" placeholder="Fill Up" required></textarea>
+                        <button type='submit' className='btn '>Submit Reviews</button>
                         <Toaster />
 
                     </form>
