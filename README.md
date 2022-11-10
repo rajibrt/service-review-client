@@ -1,7 +1,7 @@
 > ### Website Name: `onClick - Photography`
+> * Live Link: https://trust-f2212.web.app/
 > * Client-Side code github repository https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-rajibrt
 > * Server-Side code github repository https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-rajibrt
-> * Live Link: https://trust-f2212.web.app/
 ###  What in this website:
 * Personal photography website offering various type of photoshoots
 * Various type of photography packages available
@@ -11,6 +11,7 @@
 * Fast loading
 * Clean UI
 * User can review service and can delete review
+* Nice animation on various section and modules
 ### I used for this website
 * React JS
 * Node JS
