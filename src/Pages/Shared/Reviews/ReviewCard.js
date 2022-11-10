@@ -56,11 +56,7 @@ const ReviewCard = ({ review }) => {
                 <p>{message}</p>
             </div>
             <div className='absolute right-2 top-2 lg:text-base text-xs'><Star rating={starRating}> </Star></div>
-            {/* <div className='absolute right-8 bottom-4 flex'>
-                <button onClick={() => handleDelete(_id)} className='text-2xl text-red-500'><MdDelete></MdDelete></button>
-            </div> */}
         </div>
-
     );
 };
 

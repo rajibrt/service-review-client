@@ -17,7 +17,7 @@ const Services = () => {
             fetch('http://localhost:4000/services')
                 .then(res => res.json())
                 .then(data => {
-                    const result = data.sort((a, b) => a._id.localeCompare(b._id))
+                    const result = data.sort((a, b) => b._id.localeCompare(a._id))
                     setServices(result)
                 })
                 .catch(e => {

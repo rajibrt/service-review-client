@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { Link } from 'react-router-dom';
@@ -9,6 +9,23 @@ AOS.init();
 
 const ServiceCard = ({ service }) => {
     const { _id, title, rating, image, content, price } = service;
+    const [services, setServices] = useState([])
+    useEffect(() => {
+        const fetchData = () => {
+            fetch('http://localhost:4000/services/home')
+                .then(res => res.json())
+                .then(json => {
+                    const result = json.sort((a, b) => a.submissionTime.localeCompare(b.submissionTime))
+                    setServices(result)
+                })
+                .catch(e => {
+                    console.log("error", e)
+                })
+        }
+        fetchData();
+
+    }, [])
+
     return (
         <div data-aos="fade-up"
             data-aos-duration="800" className="card xl:w-3/3 md:1/3 bg-base-100 shadow-xl">
